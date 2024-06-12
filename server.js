@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const server = express()
 const getUserRoute = require('./routes/get-user')
+const getUserByIdRoute = require('./routes/get-user-by-id')
 
 //middlewares
 server.use(cors())
@@ -12,6 +13,7 @@ server.use(express.json())
 
 //routes
 server.use('/u/o/', getUserRoute)
+server.use('/user', getUserByIdRoute)
 
 //test route
 server.get('/', (req, res) => {
