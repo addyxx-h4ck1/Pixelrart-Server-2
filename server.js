@@ -6,6 +6,7 @@ const cors = require('cors')
 const server = express()
 const getUserRoute = require('./routes/get-user')
 const getUserByIdRoute = require('./routes/get-user-by-id')
+const getAllUsers = require('./routes/get-all-users')
 
 //middlewares
 server.use(cors())
@@ -13,6 +14,7 @@ server.use(express.json())
 
 //routes
 server.use('/u/o/', getUserRoute)
+server.use('/u', getAllUsers)
 server.use('/user', getUserByIdRoute)
 
 //test route
