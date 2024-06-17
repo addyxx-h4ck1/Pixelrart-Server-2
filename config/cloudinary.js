@@ -8,14 +8,11 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_SECRET_KEY,
 })
 
-const publicID = randomUUID()
-
 const options = {
-  public_id: publicID,
   folder: 'Posts',
   use_filename: true,
-  unique_filename: false,
-  overwrite: true,
+  unique_filename: true,
+  overwrite: false,
 }
 
 module.exports = { cloudinary, options }

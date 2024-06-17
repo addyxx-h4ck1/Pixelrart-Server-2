@@ -1,8 +1,13 @@
 const Post = require('../models/posts.model')
+const User = require('../models/users.model')
 const { handleImage } = require('../utils/handle-image')
 const { sendToCloudinary } = require('../utils/upload-image-to-cloudinary')
 
 const createNewPost = async (req, res) => {
+  const { user_Id } = req.params
+  let existUser = await User.findById(user_Id) //verify if user exist
+  if (!existUser) return res.status(401).json('Unauthorized') //if not send 401
+
   const { title, caption, imageName } = req.body //destructure the body
   if (!title || !caption || !imageName)
     return res.status(400).json('Bad request, missing values')
@@ -29,6 +34,7 @@ const createNewPost = async (req, res) => {
       )
   //save post to the DB
   const newPost = await Post.create({
+    creator: user_Id,
     title: title,
     caption: caption,
     photoName: imageName,
