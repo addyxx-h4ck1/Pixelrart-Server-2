@@ -2,7 +2,7 @@
 const mongoose = require('mongoose')
 
 const postSchema = new mongoose.Schema({
-  creator: { type: String, default: 'fill', trim: true },
+  creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   datePosted: { type: Date, default: Date.now },
   title: { type: String, default: 'fill', trim: true },
   caption: { type: String, default: 'fill', trim: true },

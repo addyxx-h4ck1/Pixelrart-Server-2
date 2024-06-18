@@ -9,6 +9,7 @@ const getUserRoute = require('./routes/get-user')
 const getUserByIdRoute = require('./routes/get-user-by-id')
 const getAllUsers = require('./routes/get-all-users')
 const createPostRoute = require('./routes/create-post')
+const getAllPosts = require('./routes/posts')
 
 //middlewares
 server.use(cors())
@@ -20,6 +21,7 @@ server.use('/u/o/', getUserRoute)
 server.use('/u', getAllUsers)
 server.use('/user', getUserByIdRoute)
 server.use('/u/p', createPostRoute)
+server.use('/u/posts', getAllPosts)
 
 //test route
 server.get('/', (req, res) => {
