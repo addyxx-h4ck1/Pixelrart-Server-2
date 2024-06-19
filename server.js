@@ -10,6 +10,7 @@ const getUserByIdRoute = require('./routes/get-user-by-id')
 const getAllUsers = require('./routes/get-all-users')
 const createPostRoute = require('./routes/create-post')
 const getAllPosts = require('./routes/posts')
+const deletePost = require('./routes/delete-post')
 
 //middlewares
 server.use(cors())
@@ -22,6 +23,7 @@ server.use('/u', getAllUsers)
 server.use('/user', getUserByIdRoute)
 server.use('/u/p', createPostRoute)
 server.use('/u/posts', getAllPosts)
+server.use('/u/d/p', deletePost)
 
 //test route
 server.get('/', (req, res) => {
@@ -32,7 +34,7 @@ server.get('/', (req, res) => {
 const start = async () => {
   try {
     await mongoose.connect(process.env.USERS_MONGO_URI)
-    console.log('Database ready for mutation.....')
+    console.log('connected to mongoDB.....')
     server.listen(port, () => console.log('server is running on port ' + port))
   } catch (error) {
     console.error(error)
