@@ -7,6 +7,7 @@ const getAllPosts = async (req, res) => {
   if (!existUser) return res.status(401).json('Unauthorized') //if not send 401
 
   let allPosts = await Post.find({})
+    .sort({ datePosted: -1 })
     .populate('creator', 'pImg userName brandName loc')
     .lean() //get all posts
 
