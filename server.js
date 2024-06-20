@@ -11,6 +11,7 @@ const getAllUsers = require('./routes/get-all-users')
 const createPostRoute = require('./routes/create-post')
 const getAllPosts = require('./routes/posts')
 const deletePost = require('./routes/delete-post')
+const handleSingleUserPostsRoute = require('./routes/get-single-user-posts')
 
 //middlewares
 server.use(cors())
@@ -24,6 +25,7 @@ server.use('/user', getUserByIdRoute)
 server.use('/u/p', createPostRoute)
 server.use('/u/posts', getAllPosts)
 server.use('/u/d/p', deletePost)
+server.use('/u/d/p', handleSingleUserPostsRoute)
 
 //test route
 server.get('/', (req, res) => {
