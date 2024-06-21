@@ -12,6 +12,7 @@ const createPostRoute = require('./routes/create-post')
 const getAllPosts = require('./routes/posts')
 const deletePost = require('./routes/delete-post')
 const handleSingleUserPostsRoute = require('./routes/get-single-user-posts')
+const handleUpdateProfile = require('./routes/update-profile')
 
 //middlewares
 server.use(cors())
@@ -26,6 +27,7 @@ server.use('/u/p', createPostRoute)
 server.use('/u/posts', getAllPosts)
 server.use('/u/d/p', deletePost)
 server.use('/u/d/p', handleSingleUserPostsRoute)
+server.use('/u/update', handleUpdateProfile)
 
 //test route
 server.get('/', (req, res) => {
